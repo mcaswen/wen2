@@ -1,7 +1,6 @@
 import streamlit as st
 import re
 from decimal import Decimal
-import sympy
 from sympy import *
 def jie2(a,b,c):
  try:
@@ -103,11 +102,11 @@ if o == '二元一次方程组':
      '方程默认等于0'
      k = st.text_input('请输入1式：（形如a*x+b*y-c）')
      i = st.text_input('请输入2式：（形如m*x+n*y-c）')
-     x,y = sympy.symbols('x y')
+     x,y = symbols('x y')
      k = eval(k)
      i = eval(i)
      try:
-      k = sympy.linsolve([k,i],(x,y))
+      k = linsolve([k,i],(x,y))
       k = list(k)
       ooc = list(k[0])
       st.write('运算结果为：x=',str(ooc[0]),'y=',str(ooc[1]))

@@ -1,7 +1,6 @@
 import streamlit as st
 import re
 from decimal import Decimal
-from sympy import *
 def jie2(a,b,c):
  try:
   s = float(a)
@@ -90,30 +89,13 @@ def hua(a):
 
 st.title('计算器')
 o = st.selectbox('请选择你的计算类型',
-                 (' ','四则运算','二元一次方程组','一元二次方程'))
+                 (' ','四则运算','一元二次方程'))
 if o == '四则运算':
     try:
      k = st.text_input('请输入算式（如1+2,3*4-5,666/555）')
      st.write('计算结果为：',eval(k))
     except SyntaxError:
      st.write("输入不合法")
-if o == '二元一次方程组':
-    try:
-     '方程默认等于0'
-     k = st.text_input('请输入1式：（形如a*x+b*y-c）')
-     i = st.text_input('请输入2式：（形如m*x+n*y-c）')
-     x,y = symbols('x y')
-     k = eval(k)
-     i = eval(i)
-     try:
-      k = linsolve([k,i],(x,y))
-      k = list(k)
-      ooc = list(k[0])
-      st.write('运算结果为：x=',str(ooc[0]),'y=',str(ooc[1]))
-     except IndexError:
-      '输入不合法'
-    except SyntaxError or ValueError :
-        '输入不合法'
 if o == '一元二次方程':
     '方程默认等于0'
     a = st.text_input('请输入二次项系数')
